@@ -1,0 +1,209 @@
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --background: #ffffff;
+    --text-primary: #111827;
+    --text-secondary: #4b5563;
+    --border-color: #e5e7eb;
+    --hover-bg: #f3f4f6;
+}
+
+body {
+    width: 400px;
+    padding: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    background: var(--background);
+    color: var(--text-primary);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#textInput {
+    height: 100px;
+    resize: none;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.15s ease;
+}
+
+#imageInput {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.15s ease;
+}
+
+#textInput:focus,
+#imageInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+#analyzeBtn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 14px;
+    transition: background-color 0.15s ease;
+}
+
+#analyzeBtn:hover {
+    background-color: var(--primary-hover);
+}
+
+.hidden {
+    display: none;
+}
+
+.event-card {
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    background: var(--background);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.event-card h3 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    color: var(--text-primary);
+}
+
+.event-card p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.event-links {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.calendar-options {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+}
+
+.calendar-option {
+    background: none;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+}
+
+.calendar-option:hover {
+    background-color: var(--hover-bg);
+    transform: translateY(-1px);
+}
+
+.calendar-option img {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* Loading state styles */
+
+#analyzeBtn.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+
+/* Selected state for calendar options */
+
+.calendar-option.selected {
+    background-color: rgba(37, 99, 235, 0.1);
+    border-color: var(--primary-color);
+}
+
+
+/* Responsive text sizing */
+
+@media screen and (max-width: 320px) {
+    body {
+        width: 300px;
+        font-size: 14px;
+    }
+    .event-card h3 {
+        font-size: 15px;
+    }
+    .event-card p {
+        font-size: 13px;
+    }
+}
+
+
+/* Add these styles to your existing CSS */
+
+.loader {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ffffff;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#analyzeBtn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+#analyzeBtn.loading .button-text {
+    visibility: hidden;
+}
+
+#analyzeBtn.loading .loader {
+    display: inline-block;
+    position: absolute;
+}
+
+.hidden {
+    display: none !important;
+}

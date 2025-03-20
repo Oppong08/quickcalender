@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "AI Calendar Assistant",
+    "version": "1.0",
+    "description": "Extract event information and create calendar events using AI",
+    "permissions": [
+        "activeTab",
+        "storage",
+        "downloads",
+        "identity",
+        "contextMenus"
+    ],
+    "host_permissions": [
+        "https://api.openai.com/*"
+    ],
+    "icons": {
+        "128": "assets/icons/icon128.png"
+    },
+    "action": {
+        "default_popup": "popup/popup.html",
+        "default_icon": "assets/icons/icon128.png"
+    },
+    "background": {
+        "service_worker": "background.js"
+    }
+}
