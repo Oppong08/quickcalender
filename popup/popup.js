@@ -1,8 +1,9 @@
+import config from '../config.js';
+
 class CalendarAssistant {
     constructor() {
         console.log("CalendarAssistant initialized");
-        this.apiKey =
-            "api-key-here";
+        this.apiKey = config.OPENAI_API_KEY;
         this.initializeElements();
         this.addEventListeners();
         this.loadSavedState();
@@ -382,6 +383,9 @@ class CalendarAssistant {
 
     async extractEventInfoFromImage(imageUrl) {
         try {
+            // Decode the URL if it's double-encoded
+            const decodedUrl = decodeURIComponent(decodeURIComponent(imageUrl));
+            
             const response = await fetch(
                 "https://api.openai.com/v1/chat/completions",
                 {
@@ -415,7 +419,7 @@ class CalendarAssistant {
                                     {
                                         type: "image_url",
                                         image_url: {
-                                            url: imageUrl,
+                                            url: decodedUrl,
                                         },
                                     },
                                 ],
